@@ -1,0 +1,221 @@
+/* Lab 9 (SR) — Crew Board
+   Airport departures-board look: B612 / B612 Mono (the Airbus cockpit typeface),
+   near-black panels, amber flap text, status colour as the only other accent. */
+
+:root {
+  --bg: #0b0d10;
+  --panel: #12151a;
+  --row: #161a20;
+  --row-alt: #13171c;
+  --line: #232831;
+  --text: #e9edf2;
+  --muted: #8a94a3;
+  --amber: #ffb627;
+  --amber-dim: #a8781a;
+  --go: #3ddc84;
+  --stby: #ffb627;
+  --rest: #6cb4ff;
+  --leave: #ff6b6b;
+  --flap: #0f1216;
+  --radius: 10px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 400px at 10% -10%, rgba(255, 182, 39, .07), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font: 400 15px/1.5 B612, system-ui, sans-serif;
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -999px; }
+.skip:focus { left: 12px; top: 12px; background: var(--amber); color: #000; padding: 8px 12px; z-index: 9; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+a { color: var(--amber); }
+code { font: 400 .9em "B612 Mono", ui-monospace, monospace; color: var(--amber); }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- top bar ---------- */
+.bar {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 14px 24px; border-bottom: 1px solid var(--line); background: rgba(11, 13, 16, .85);
+  position: sticky; top: 0; z-index: 4; backdrop-filter: blur(8px);
+}
+.bar__brand { display: flex; align-items: center; gap: 12px; }
+.code {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 8px;
+  background: var(--amber); color: #111; font: 700 18px "B612 Mono", monospace; letter-spacing: .02em;
+}
+.airline { margin: 0; font-weight: 700; font-size: 16px; }
+.subtitle { margin: 0; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+.bar__clock { text-align: right; font-family: "B612 Mono", monospace; }
+.clock { display: block; font-size: 26px; font-weight: 700; color: var(--amber); line-height: 1; letter-spacing: .04em; }
+.date { font-size: 11.5px; color: var(--muted); letter-spacing: .1em; }
+
+/* ---------- intro + ticker ---------- */
+.intro { padding: 40px 0 22px; }
+h1 {
+  margin: 0 0 10px; font: 700 clamp(36px, 6vw, 64px)/1 B612, sans-serif; letter-spacing: -.02em; text-transform: uppercase;
+}
+h1 span { color: var(--amber); }
+.intro p { margin: 0; color: var(--muted); max-width: 66ch; }
+
+.ticker {
+  list-style: none; margin: 0 0 18px; padding: 0;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+}
+.ticker li { background: var(--panel); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.ticker span { font-size: 11.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+.ticker b { font: 700 26px/1.1 "B612 Mono", monospace; color: var(--text); font-variant-numeric: tabular-nums; }
+.ticker b.go { color: var(--go); }
+.ticker b.amber { color: var(--amber); }
+
+/* ---------- board ---------- */
+.board { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.board__head {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 12px 14px; border-bottom: 1px solid var(--line);
+}
+
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; }
+.tabs button {
+  font: 700 13px "B612 Mono", monospace; letter-spacing: .06em; color: var(--muted); cursor: pointer;
+  background: var(--flap); border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; min-height: 36px;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.tabs button sup { font-size: 10px; margin-left: 4px; color: var(--muted); }
+.tabs button:hover { color: var(--text); border-color: var(--muted); }
+.tabs button[aria-pressed="true"] { background: var(--amber); border-color: var(--amber); color: #111; }
+.tabs button[aria-pressed="true"] sup { color: #111; }
+
+.find {
+  display: flex; align-items: center; gap: 10px; flex: 0 1 340px;
+  background: var(--flap); border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; min-height: 38px;
+}
+.find:focus-within { border-color: var(--amber); }
+.find span { font: 700 12px "B612 Mono", monospace; color: var(--amber); letter-spacing: .1em; text-transform: uppercase; }
+.find input {
+  flex: 1; min-width: 0; border: 0; background: transparent; color: var(--text);
+  font: 400 14px "B612 Mono", monospace; height: 36px;
+}
+.find input:focus { outline: none; }
+.find input::placeholder { color: #5b6472; }
+
+.board__scroll { overflow-x: auto; }
+table.crew { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 1040px; }
+
+.crew thead th {
+  text-align: left; padding: 0; background: #0e1115; border-bottom: 1px solid var(--line);
+  font: 700 11px "B612 Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--amber-dim);
+  white-space: nowrap;
+}
+.crew thead th:not(:has(button)) { padding: 12px; }
+.crew thead th button {
+  all: unset; box-sizing: border-box; width: 100%; cursor: pointer; padding: 12px;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.crew thead th.num button { justify-content: flex-end; }
+.crew thead th button::after { content: "▴▾"; font-size: 9px; letter-spacing: -1px; opacity: .35; }
+.crew thead th[aria-sort="ascending"] button::after { content: "▴"; opacity: 1; }
+.crew thead th[aria-sort="descending"] button::after { content: "▾"; opacity: 1; }
+.crew thead th[aria-sort], .crew thead th button:hover { color: var(--amber); }
+
+.crew td { padding: 10px 12px; border-bottom: 1px solid var(--line); background: var(--row); vertical-align: middle; white-space: nowrap; }
+.crew tbody tr:nth-child(even) td { background: var(--row-alt); }
+.crew tbody tr:hover td { background: #1b2028; }
+
+/* flap tiles */
+[data-flap] {
+  display: inline-block; font: 700 14px "B612 Mono", monospace; letter-spacing: .08em; color: var(--amber);
+  background: var(--flap); border: 1px solid #1f242c; border-radius: 4px; padding: 3px 7px;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255, 255, 255, .03);
+  background-image: linear-gradient(180deg, transparent calc(50% - .5px), rgba(0, 0, 0, .55) calc(50% - .5px), rgba(0, 0, 0, .55) calc(50% + .5px), transparent calc(50% + .5px));
+}
+.name [data-flap] { color: var(--text); }
+.id [data-flap] { color: var(--muted); }
+
+.rank { display: inline-flex; align-items: center; gap: 9px; font-size: 13.5px; }
+.stripes { display: inline-flex; flex-direction: column-reverse; gap: 2px; }
+.stripes i { width: 16px; height: 2.5px; border-radius: 1px; background: #2a303a; }
+.stripes i.on { background: var(--amber); }
+
+.types { display: inline-flex; gap: 4px; }
+.types span {
+  font: 400 11.5px "B612 Mono", monospace; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 4px; padding: 2px 6px;
+}
+
+.p { display: inline-block; margin: 0 -.16em; }
+.num { text-align: right; font: 400 14px "B612 Mono", monospace; font-variant-numeric: tabular-nums; color: var(--text); }
+.flight small { display: block; font: 400 11.5px "B612 Mono", monospace; color: var(--muted); margin-top: 3px; letter-spacing: .06em; }
+.none { color: #4a525e; font-family: "B612 Mono", monospace; }
+
+.status {
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 700 12.5px "B612 Mono", monospace; letter-spacing: .1em;
+}
+.status::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; }
+.st-on-duty .status { color: var(--go); }
+.st-standby .status { color: var(--stby); }
+.st-rest .status { color: var(--rest); }
+.st-leave .status { color: var(--leave); }
+.st-on-duty .status::before { animation: blink 1.6s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .35; } }
+
+.crew tr.msg td { text-align: center; padding: 48px 16px; font: 700 14px "B612 Mono", monospace; letter-spacing: .1em; color: var(--muted); white-space: normal; }
+.crew tr.msg--err td { color: var(--leave); }
+
+.board__foot { margin: 0; padding: 10px 14px; font: 400 12px "B612 Mono", monospace; letter-spacing: .1em; color: var(--muted); border-top: 1px solid var(--line); }
+
+.colophon { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 18px 2px 48px; font-size: 13px; color: var(--muted); }
+.colophon a { text-decoration: none; }
+
+/* ---------- responsive: rows become boarding-pass cards ---------- */
+@media (max-width: 900px) {
+  .ticker { grid-template-columns: repeat(3, 1fr); }
+  .ticker li:nth-child(n+4) { grid-column: span 1; }
+}
+
+@media (max-width: 700px) {
+  .wrap { padding: 0 16px; }
+  .bar { padding: 12px 16px; }
+  .clock { font-size: 20px; }
+  .subtitle { display: none; }
+  .date { white-space: nowrap; font-size: 10.5px; }
+  .code { width: 38px; height: 38px; font-size: 16px; }
+  .intro { padding: 28px 0 18px; }
+  .ticker { grid-template-columns: repeat(2, 1fr); }
+  .ticker li:last-child { grid-column: 1 / -1; }
+  .find { flex: 1 1 100%; }
+
+  table.crew { min-width: 0; }
+  .crew thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .crew, .crew tbody, .crew tr, .crew td { display: block; width: 100%; }
+  .crew tbody tr { padding: 14px; border-bottom: 1px solid var(--line); background: var(--row); display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; }
+  .crew tbody tr:nth-child(even) { background: var(--row-alt); }
+  .crew td, .crew tbody tr:nth-child(even) td, .crew tbody tr:hover td { padding: 0; border: 0; background: none; white-space: normal; width: auto; }
+  .crew td.name { grid-column: 1; grid-row: 1; }
+  .crew td.id { grid-column: 2; grid-row: 1; text-align: right; }
+  .crew td[data-label="Rank"] { grid-column: 1; }
+  .crew td[data-label="Status"] { grid-column: 2; text-align: right; }
+  .crew td[data-label="Base"], .crew td[data-label="Hours"], .crew td.flight, .crew td.report, .crew td[data-label="Type ratings"] {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left;
+  }
+  .crew td[data-label="Hours"], .crew td.report { align-items: flex-end; text-align: right; }
+  .crew td[data-label="Base"]::before, .crew td[data-label="Hours"]::before, .crew td.flight::before, .crew td.report::before, .crew td[data-label="Type ratings"]::before {
+    content: attr(data-label); font: 700 10px "B612 Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--amber-dim);
+  }
+  .crew td.flight small { display: inline; margin-left: 6px; }
+  .crew tr.msg { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

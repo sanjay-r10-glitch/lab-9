@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roster airline="Deccan Skyways" code="DK" date="2026-11-16" hub="BLR">
+  <member id="DK0104" rank="Captain" base="BLR" status="On Duty">
+    <name>Vikram Rao</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+    </ratings>
+    <hours>14250</hours>
+    <joined>2007-03-15</joined>
+    <duty flight="DK 114" from="BLR" to="DEL" report="05:15"/>
+  </member>
+  <member id="DK0128" rank="Purser" base="BLR" status="On Duty">
+    <name>Karthik Subramanian</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+    </ratings>
+    <hours>11600</hours>
+    <joined>2008-04-14</joined>
+    <duty flight="DK 114" from="BLR" to="DEL" report="05:15"/>
+  </member>
+  <member id="DK0156" rank="Captain" base="BLR" status="On Duty">
+    <name>Rajeshwari Natarajan</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+    </ratings>
+    <hours>12800</hours>
+    <joined>2009-08-20</joined>
+    <duty flight="DK 238" from="BLR" to="BOM" report="07:30"/>
+  </member>
+  <member id="DK0189" rank="Purser" base="MAA" status="Rest">
+    <name>Deepa Balakrishnan</name>
+    <ratings>
+      <type>A320</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>9850</hours>
+    <joined>2010-09-25</joined>
+  </member>
+  <member id="DK0214" rank="Captain" base="HYD" status="On Duty">
+    <name>Srinivas Rao Kollipara</name>
+    <ratings>
+      <type>ATR72</type>
+    </ratings>
+    <hours>10950</hours>
+    <joined>2011-11-04</joined>
+    <duty flight="DK 351" from="HYD" to="MAA" report="10:45"/>
+  </member>
+  <member id="DK0245" rank="Purser" base="BLR" status="On Duty">
+    <name>Nidhi Mallesh</name>
+    <ratings>
+      <type>A320</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>8200</hours>
+    <joined>2012-01-19</joined>
+    <duty flight="DK 238" from="BLR" to="BOM" report="07:30"/>
+  </member>
+  <member id="DK0278" rank="Captain" base="MAA" status="On Duty">
+    <name>Senthil Murugan</name>
+    <ratings>
+      <type>A320</type>
+    </ratings>
+    <hours>9400</hours>
+    <joined>2013-05-12</joined>
+    <duty flight="DK 472" from="MAA" to="COK" report="15:20"/>
+  </member>
+  <member id="DK0312" rank="Captain" base="COK" status="Standby">
+    <name>Arun Kurup</name>
+    <ratings>
+      <type>A320</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>7850</hours>
+    <joined>2015-02-18</joined>
+  </member>
+  <member id="DK0341" rank="Purser" base="HYD" status="Standby">
+    <name>Kalyan Chakravarthy</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>6400</hours>
+    <joined>2015-08-11</joined>
+  </member>
+  <member id="DK0375" rank="Cabin Crew" base="HYD" status="On Duty">
+    <name>Swathi Reddy</name>
+    <ratings>
+      <type>A320</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>5600</hours>
+    <joined>2016-10-18</joined>
+    <duty flight="DK 351" from="HYD" to="MAA" report="10:45"/>
+  </member>
+  <member id="DK0402" rank="First Officer" base="BLR" status="On Duty">
+    <name>Venkatadri Chowdary</name>
+    <ratings>
+      <type>A320</type>
+    </ratings>
+    <hours>5800</hours>
+    <joined>2017-06-10</joined>
+    <duty flight="DK 238" from="BLR" to="BOM" report="07:30"/>
+  </member>
+  <member id="DK0436" rank="Cabin Crew" base="BLR" status="On Duty">
+    <name>Gautham Nambiar</name>
+    <ratings>
+      <type>A320</type>
+    </ratings>
+    <hours>4900</hours>
+    <joined>2017-12-05</joined>
+    <duty flight="DK 238" from="BLR" to="BOM" report="07:30"/>
+  </member>
+  <member id="DK0468" rank="First Officer" base="BLR" status="Standby">
+    <name>Praveen Kumar Shetty</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+    </ratings>
+    <hours>4950</hours>
+    <joined>2018-09-01</joined>
+  </member>
+  <member id="DK0505" rank="Cabin Crew" base="BLR" status="On Duty">
+    <name>Sneha Paul</name>
+    <ratings>
+      <type>A321</type>
+    </ratings>
+    <hours>4100</hours>
+    <joined>2019-04-12</joined>
+    <duty flight="DK 114" from="BLR" to="DEL" report="05:15"/>
+  </member>
+  <member id="DK0532" rank="First Officer" base="MAA" status="On Duty">
+    <name>Meera Krishnan</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+    </ratings>
+    <hours>3800</hours>
+    <joined>2020-01-15</joined>
+    <duty flight="DK 472" from="MAA" to="COK" report="15:20"/>
+  </member>
+  <member id="DK0567" rank="Cabin Crew" base="MAA" status="On Duty">
+    <name>Dinesh Soundararajan</name>
+    <ratings>
+      <type>A320</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>3450</hours>
+    <joined>2020-08-20</joined>
+    <duty flight="DK 472" from="MAA" to="COK" report="15:20"/>
+  </member>
+  <member id="DK0601" rank="First Officer" base="HYD" status="On Duty">
+    <name>Harika Vangaveeti</name>
+    <ratings>
+      <type>ATR72</type>
+    </ratings>
+    <hours>2900</hours>
+    <joined>2021-07-22</joined>
+    <duty flight="DK 351" from="HYD" to="MAA" report="10:45"/>
+  </member>
+  <member id="DK0638" rank="Cabin Crew" base="HYD" status="Rest">
+    <name>Reshma Suresh</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+    </ratings>
+    <hours>2750</hours>
+    <joined>2021-11-15</joined>
+  </member>
+  <member id="DK0672" rank="Cabin Crew" base="COK" status="Standby">
+    <name>Pranav Varma</name>
+    <ratings>
+      <type>A320</type>
+    </ratings>
+    <hours>2200</hours>
+    <joined>2022-06-01</joined>
+  </member>
+  <member id="DK0709" rank="First Officer" base="BLR" status="On Duty">
+    <name>Ananya Hegde</name>
+    <ratings>
+      <type>A321</type>
+    </ratings>
+    <hours>1750</hours>
+    <joined>2023-03-10</joined>
+    <duty flight="DK 114" from="BLR" to="DEL" report="05:15"/>
+  </member>
+  <member id="DK0743" rank="Cabin Crew" base="COK" status="Rest">
+    <name>Mithun Madhavan</name>
+    <ratings>
+      <type>A320</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>1650</hours>
+    <joined>2023-02-14</joined>
+  </member>
+  <member id="DK0778" rank="Cabin Crew" base="COK" status="Standby">
+    <name>Sandhya Devaraj</name>
+    <ratings>
+      <type>ATR72</type>
+    </ratings>
+    <hours>1200</hours>
+    <joined>2023-11-08</joined>
+  </member>
+  <member id="DK0812" rank="Cabin Crew" base="BLR" status="Leave">
+    <name>Rohini Shankar</name>
+    <ratings>
+      <type>A320</type>
+      <type>A321</type>
+      <type>ATR72</type>
+    </ratings>
+    <hours>950</hours>
+    <joined>2024-05-19</joined>
+  </member>
+  <member id="DK0849" rank="First Officer" base="CCJ" status="Rest">
+    <name>Akhil Thampi</name>
+    <ratings>
+      <type>ATR72</type>
+    </ratings>
+    <hours>920</hours>
+    <joined>2024-10-05</joined>
+  </member>
+  <member id="DK0885" rank="Cabin Crew" base="MAA" status="Leave">
+    <name>Divya Ramesh</name>
+    <ratings>
+      <type>A321</type>
+    </ratings>
+    <hours>650</hours>
+    <joined>2025-01-20</joined>
+  </member>
+  <member id="DK0921" rank="Cabin Crew" base="CCJ" status="Leave">
+    <name>Tejaswini Katta</name>
+    <ratings>
+      <type>ATR72</type>
+    </ratings>
+    <hours>380</hours>
+    <joined>2025-09-15</joined>
+  </member>
+</roster>
